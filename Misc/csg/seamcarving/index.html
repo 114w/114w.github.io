@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <title> Seam Carving</title>
+  <meta charset="UTF-8">
+</head>
+
+<style>
+  /* www.w3schools.com/css/css3_variables.asp */
+  :root {
+    --TITLE-COLOR: #ffffff;
+    --TITLE-BACKGROUND-COLOR: #00008b;
+
+    --BACKGROUND-COLOR: #e9f4ff;
+
+
+    --SUMMARY-CONTENT-COLOR: #811818;
+    --SUMMARY-CONTENT-BACKGROUND-COLOR: #f9fcff;
+    --SUMMARY-CONTENT-SHADOW-COLOR: #d0d0d0;
+  }
+
+  img {
+    padding-top: 2pc;
+  }
+
+
+  /* define layout size of the extension pop-up*/
+  html {
+    background-color: var(--BACKGROUND-COLOR);
+  }
+
+  /* stackoverflow.com/a/77259167 */
+  *,
+  ::before,
+  ::after {
+    padding: 0;
+    margin: 5pt;
+    box-sizing: border-box;
+  }
+
+
+  .summary_box {
+    color: var(--SUMMARY-CONTENT-COLOR);
+    background-color: var(--SUMMARY-CONTENT-BACKGROUND-COLOR);
+    box-shadow: 1px 1px 1px 2px var(--SUMMARY-CONTENT-SHADOW-COLOR);
+    font-family: monospace;
+    font-weight: normal;
+    font-size: 10pt;
+    border-radius: 7%;
+    padding: 0.08in;
+    padding-right: 0;
+    text-align: center;
+  }
+</style>
+
+
+<body>
+  <div class="summary_box">
+
+    <h1 style="color: var(--TITLE-BACKGROUND-COLOR); text-align: center; font-family: sans-serif; border-radius: 20%;">
+      Seam Carving</h1>
+    date -- May 19th;
+    <br> desc -- showcase of seamcarving program inputs and outputs;
+
+  </div>
+
+  <div class="summary_box" style="border-radius: 25%;">
+    <h2> The Good </h2>
+    <figure>
+      <img src="img/vertical.png" width="33%">
+      <figcaption>Origial image - 640 by 400</figcaption>
+    </figure>
+
+    <figure>
+      <img src="img/v_dump_grayscale.png" width="33%">
+      <figcaption>Energy grayscale mapping of origial image - 640 by 400</figcaption>
+    </figure>
+    <figure>
+      <img src="img/v_scharr_dump_grayscale.png" width="33%">
+      <figcaption>Scharr energy mapping of origial image - 640 by 400</figcaption>
+    </figure>
+
+
+    <figure>
+      <img src="img/v1.png" width="33%">
+      <figcaption>removed horizontal seams - 640 by 300</figcaption>
+    </figure>
+
+    <figure>
+      <img src="img/v2.png" width="33%">
+      <figcaption>added vertical seams - 1000 by 400</figcaption>
+    </figure>
+
+    <figure>
+      <img src="img/v3.png" width="33%">
+      <figcaption>added vertical and horizontal seams - 1000 by 1000</figcaption>
+    </figure>
+
+    <h3>
+      Comment:
+    </h3>
+    <p>
+      The results are not fantanstic, but are tolerable. The added seams are visible, but overall since the background
+      is not so fancy, its just plain for most part, so the results we got are okay when compared with the results the
+      program yielded for other images.
+    </p>
+
+
+
+
+
+  </div>
+
+  <div class="summary_box" style="border-radius: 35%;">
+    <h2 style="text-align: right;"> The Bad </h2>
+    <figure>
+      <img src="img/house_by_jim_mccann.jpg" width="33%">
+      <figcaption>Origial image - 512 by 384</figcaption>
+    </figure>
+
+    <figure>
+      <img src="img/h_dump_grayscale.png" width="33%">
+      <figcaption>Energy grayscale mapping of origial image - 512 by 384</figcaption>
+    </figure>
+    <figure>
+      <img src="img/h_scharr_dump_grayscale.png" width="33%">
+      <figcaption>Scharr energy mapping of origial image - 512 by 384</figcaption>
+    </figure>
+
+
+
+    <figure>
+      <img src="img/h1.jpg" width="33%">
+      <figcaption>removed horizontal and vertical seams - 510 by 450</figcaption>
+    </figure>
+
+    <figure>
+      <img src="img/h2.jpg" width="33%">
+      <figcaption>added horizontal seams and removed vertical seams - 300 by 500</figcaption>
+    </figure>
+
+
+    <h3>
+      Comment:
+    </h3>
+    <p>
+      The results are not so good. But still the house stayed fine to some extent! Some portion of the image are
+      stretched so much that it formed the weird pattern of repetition.
+    </p>
+
+  </div>
+
+
+  <div class="summary_box" style="border-radius: 40%; text-align: center;">
+    <h2> The ugly </h2>
+
+    <figure>
+      <img src="img/dog.jpg" width="33%">
+      <figcaption>Origial image - 500 by 420</figcaption>
+    </figure>
+
+    <figure>
+      <img src="img/d_dump_grayscale.png" width="33%">
+      <figcaption>Energy grayscale mapping of origial image - 500 by 420</figcaption>
+    </figure>
+    <figure>
+      <img src="img/d_scharr_dump_grayscale.png" width="33%">
+      <figcaption>Scharr energy mapping of origial image - 500 by 420</figcaption>
+    </figure>
+
+
+
+    <figure>
+      <img src="img/d1.jpg" width="33%">
+      <figcaption>removed horizontal seams - 500 by 500</figcaption>
+    </figure>
+
+    <figure>
+      <img src="img/d2.jpg" width="33%">
+      <figcaption>added horizontal seams and vertical seams - 550 by 550</figcaption>
+    </figure>
+
+
+    <figure>
+      <img src="img/d3.jpg" width="33%">
+      <figcaption>removed horizontal seams and vertical seams - 400 by 400</figcaption>
+    </figure>
+
+
+    <h3>
+      Comment:
+    </h3>
+    <p>
+      As expected the program had trouble with images consisting something like face. The outputs are ugly they didn't
+      turn out be well, some part of the face are stretched and shrinked so much that they don't resemble the reality.
+    </p>
+
+  </div>
+
+
+</body>
+<p>
+  (2024)
+</p>
+
+</html>
